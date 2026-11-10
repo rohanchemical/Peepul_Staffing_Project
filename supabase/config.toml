@@ -1,0 +1,6 @@
+project_id = "Peepul_Staffing_Project"
+
+# JWTs are verified in the function with auth.getUser before every action.
+# Required for modern asymmetric user tokens / publishable client keys.
+[functions.people-account]
+verify_jwt = false

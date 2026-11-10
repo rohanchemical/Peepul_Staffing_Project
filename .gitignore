@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+.sites-runtime/
+.openai/metrics/
+*.log
+*.xlsx
+*.pdf
+*.csv
+supabase/.temp/

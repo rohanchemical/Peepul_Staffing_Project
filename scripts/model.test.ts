@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {staffing,finance,scenario,defaultPolicy,evenly,sum} from '../src/lib/model.ts';
+const current=[13,6,3,0,2,0],donor=[12,5,4,0,2,0];
+const rows=current.map((v,i)=>({programme_id:'p',role_index:i,current_staff:v,donor_posts:donor[i],hiring_requests:i===0?3:0,org_plan:donor[i]}));
+const m=staffing({id:'p'},rows,[],defaultPolicy,'2026-10-01');
+assert.deepEqual(m.promotions.map(p=>p.ceiling),[3,1,1,0,1]);
+assert.equal(m.total,24);assert.equal(sum(m.after),24);assert.equal(m.hireCount,3);assert.equal(m.holdCount,0);
+const l={id:'l',programme_id:'p',annual_budget:1200,original_annual:1200,monthly_plan:Array(12).fill(100),category:'People & employer costs'};
+const entries=Array.from({length:12},(_,i)=>({budget_line_id:'l',month_index:i,kind:i<=6?'actual':'forecast',amount:100}));
+entries.push({budget_line_id:'l',month_index:7,kind:'commitment',amount:80});
+assert.equal(finance([l],entries,6).eac,1200,'Commitments must not be counted twice');
+entries[12].amount=150;assert.equal(finance([l],entries,6).eac,1250);
+assert.equal(finance([l],entries.slice(1),6).eac,null,'Missing actuals cannot become zero');
+assert.equal(finance([],[],6).eac,null);
+assert.equal(sum(evenly(100)),100);
+assert.equal(staffing({id:'p',roster_mode:true},rows,[{programme_id:'p',role_index:0,active:true,allocation:50,start_date:'2027-01-01'}],defaultPolicy,'2026-10-01').total,0);
+const s=scenario(m,[],finance([l],entries,6),{hireMonth:7},6,1000,defaultPolicy);assert.equal(s.eac,null,'Missing role costs block cost projections');
+console.log('PASS: workbook promotion path, staffing conservation, hiring caps, financial completeness, commitment treatment, monthly phasing, dated roster and salary restrictions.');
