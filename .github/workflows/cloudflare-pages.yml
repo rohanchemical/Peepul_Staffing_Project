@@ -50,10 +50,16 @@ jobs:
               if error.code != 404:
                   raise RuntimeError("Cloudflare project lookup failed (HTTP " + str(error.code) + ")") from None
               payload = json.dumps({"name": name, "production_branch": "main"}).encode()
-              with urllib.request.urlopen(urllib.request.Request(base, data=payload, headers=headers, method="POST")) as response:
-                  result = json.load(response)
-                  if not result.get("success"):
-                      raise RuntimeError("Cloudflare project creation failed")
+              try:
+                  with urllib.request.urlopen(urllib.request.Request(base, data=payload, headers=headers, method="POST")) as response:
+                      result = json.load(response)
+                      if not result.get("success"):
+                          raise RuntimeError("Cloudflare project creation failed")
+              except urllib.error.HTTPError as creation_error:
+                  body = json.load(creation_error)
+                  for item in body.get("errors", []):
+                      print("Cloudflare error:", item.get("code"), item.get("message"))
+                  raise RuntimeError("Cloudflare project creation rejected (HTTP " + str(creation_error.code) + ")") from None
               print("Created Pages project")
       - name: Deploy production
         run: npx --yes wrangler@4 pages deploy dist --project-name="$PROJECT_NAME" --branch=main
