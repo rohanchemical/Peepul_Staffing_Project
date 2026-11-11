@@ -30,6 +30,7 @@ jobs:
         run: |
           test -n "$CLOUDFLARE_API_TOKEN" || { echo "Missing CLOUDFLARE_API_TOKEN"; exit 1; }
           test -n "$CLOUDFLARE_ACCOUNT_ID" || { echo "Missing CLOUDFLARE_ACCOUNT_ID"; exit 1; }
+          [[ "$CLOUDFLARE_ACCOUNT_ID" =~ ^[a-f0-9]{32}$ ]] || { echo "CLOUDFLARE_ACCOUNT_ID must be exactly 32 hexadecimal characters. Copy the Account ID again from Cloudflare."; exit 1; }
       - run: npm ci
       - run: npm run build
       - name: Create Pages project if needed
