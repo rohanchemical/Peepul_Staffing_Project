@@ -13,3 +13,42 @@
 @media(max-width:680px){.sidebar{width:244px}.app-main{margin:0;width:100%}.content{padding:23px 15px}.topbar{padding:0 15px}.filterbar{align-items:start;flex-direction:column}.filter-left{width:100%}.filter-left select{max-width:65%;padding:9px 6px}.period-picker{font-size:11px}.summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stat-value.currency-value{font-size:20px}.stat-card{padding:15px}.form-grid{grid-template-columns:1fr}.month-inputs{grid-template-columns:repeat(3,1fr)}.admin-toolbar{align-items:stretch}.admin-toolbar label{width:100%}.page-title h1{font-size:29px!important}.panel-heading{flex-wrap:wrap}.scenario-grid{display:block}.panel-body{padding:0 16px 18px}}
 
 .sample-control{display:flex;align-items:center;gap:8px;margin:0}.sample-control input{width:17px;height:17px;accent-color:#26a4b6}.monthly-table td strong{display:block;margin-top:7px}.monthly-table th small{display:block;margin-top:5px}.forecast-cell{background:#f0f8fa}.credential{font-size:15px;margin:15px 0;user-select:all}.panel-heading p{line-height:1.7}.sidebar-account{flex-shrink:0}
+
+/* Screenshot reference: Peepul indigo, teal and light workspace. */
+:root{--brand-indigo:#29266f;--brand-teal:#26a4b6;--brand-blue:#5270ad;--brand-ink:#272640;--brand-surface:#fcfcff}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline-color:var(--brand-teal)}
+.login-page{background:var(--brand-surface)}
+.login-story{padding:clamp(36px,3vw,60px) 9%}
+.login-story .logo img{width:clamp(150px,10.3vw,210px)!important;border-radius:9px!important}
+.story-content{margin-top:clamp(55px,6vw,120px)}
+.story-content h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(36px,2.55vw,53px)!important;line-height:1.09;letter-spacing:-1.2px!important;font-weight:400;margin:30px 0 32px}
+.story-content h1 em{color:#87d3dd}
+.story-content>p{font-size:clamp(13px,.88vw,18px);max-width:480px;line-height:1.85}
+.light-text{font-size:clamp(10px,.7vw,14px);color:#87d3dd}
+.story-footer{font-size:clamp(10px,.68vw,14px)}
+.login-main{padding:clamp(30px,2.6vw,54px) 9% 30px}
+.login-form-wrap{max-width:510px;padding:48px 0}
+.login-form-wrap h2{font-size:clamp(32px,2.15vw,44px);font-weight:400;letter-spacing:-1.4px;color:var(--brand-ink)}
+.login-form-wrap>p{font-size:clamp(12px,.8vw,16px);margin:16px 0 36px}
+.welcome-icon{width:68px;height:68px;border-radius:20px;margin-bottom:32px}
+.welcome-icon svg{width:34px;height:34px}
+.login-form-wrap label{font-size:14px;margin-top:28px;margin-bottom:12px}
+.login-form-wrap input{min-height:58px;padding:16px 18px;font-size:16px;border-radius:10px}
+.login-form-wrap .password-field input{padding-right:52px}
+.login-form-wrap .password-field button{top:10px;right:8px}
+.microsoft-button{min-height:62px;font-size:15px;border-color:#dce0eb;border-radius:10px}
+.microsoft-button:hover{background:#f0f8fa}
+.login-form-wrap .primary{min-height:62px;font-size:15px;border-radius:9px;margin-top:34px}
+.login-top{font-size:10px}
+.divider{margin:34px 0 28px;font-size:12px}
+.login-help{font-size:11px!important;color:#73788f}
+.help-link{font-size:12px;color:#327c8a}
+.login-footer{font-size:11px}
+.sso-status{font-size:11px!important;color:#73788f!important}
+.art-avatars i{border-color:#393580}
+.art-orbit{border-color:#ffffff18}
+.art-avatars b,.art-impact small{color:#c3c4dd}
+.page-title h1{font-family:Georgia,'Times New Roman',serif}
+@media(min-width:1600px){.story-art{transform:scale(1.35);transform-origin:left top;margin-top:50px;height:320px}.sidebar{width:280px;padding:30px 20px 0}.app-main{margin-left:280px;width:calc(100% - 280px)}.nav-item{font-size:14px;padding:14px}.workspace-label{font-size:9px}.page-title h1{font-size:42px!important}}
+@media(max-width:900px){.login-story{padding:36px 8%}.story-content{margin-top:45px}.login-main{padding:30px 7%}.welcome-icon{width:52px;height:52px}.login-form-wrap{padding:38px 0}.login-form-wrap input{min-height:50px;font-size:14px}.microsoft-button,.login-form-wrap .primary{min-height:52px;font-size:13px}.login-footer{font-size:9px}}
+@media(max-width:680px){.login-main{padding:28px 26px;min-height:100svh}.login-form-wrap{padding:45px 0}.login-form-wrap h2{font-size:34px}.login-form-wrap>p{font-size:13px}.login-top{font-size:8px}.login-form-wrap label{font-size:13px}.login-help{line-height:1.6;text-align:center}.login-footer{gap:16px;font-size:9px}}
